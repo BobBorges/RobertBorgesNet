@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>    
+    <body>
+        <a><img src="http://www.dna.sr/media/22459/dna_column_gebouw.jpg"</a>
+        <h1>Data Sharing Tutorial for DNA project</h1>
+        <p>This page will get you up and running with a step-by-step tutorial for efficient data sharing protocols. For the present, I will share Audio and Video files via a private link. The will come in a prearranged directory/folder structure; it's important to maintain this structure when you download files. More about this below. We will work in Elan, but for you, the collaborator, this will be limited to adding/editing annotations; I will maintain the ELAN docs and tier structures. For ''version control'' and so that we always have up-to-date elan files, we will use Git; this requires Git to be installed and the collaborator to have a Github account. Git is well known for not being the most user friendly, but with this tutorial, I hope we can reduce it all to a matter of copy-pasting relevant commands. The setup is the most irritating part; this took me about 20 mins to setup and test using 2 computers. Later actually using it will add about 30 seconds to the beginning and end of each work session where you're changing something in the files.</p>
+        <p>I have a feeling the tutorial will be a little long-winded (sorry); please bear with me. The better we keep on the same page at the beginning, the more efficient analysis will be. </p>
+        <h3>Getting and Storing project media on </h3>
+        <p>You will receive a link to a folder with project media. This is where you can access audio and video data -- the recordings from DNA sessions. There will be an .mp4 (video) and .wav (audio) for each DNA meeting. For best results (i.e. to be able to see/hear the recordings in tandem with the elan transcriptions) these should be downloaded to the machine you will be working on. You should create a folder on your machine -- I'd suggest somewhere you don't mind leaving the folder for the duration of this project, but also not very deep in nested structure. Perhaps the ''user'' folder or the ''Documents'' folder. It doesn't really matter what you call it, but I will refer to it as the ''DNA_project'' folder henceforth; using this name may help avoid some confusion later on.</p>
+        <p>The data is stored at the link provided in a pre-existing folder structure. I will work with data in batches of 3 or 4 videos for now; these will get a ''batch'' folder. So at the top of the folder structure, you should see a number of folders labeled ''batch_001'', ''batch_002'' etc. Files are labeled by the date of the recording, and contained in a folder of the same name. So, inside the ''batch_01'' folder, you find a (hypothetical) folder for recordings made on April 1, 2019 called ''20190401''. The data files inside the ''20190401'' folder are called ''20190401.mp4'' and ''20190401.wav''.</p>
+        <p><b>N.b. 1: It's really important that you maintain the folder structure and names on your local copy of the media. If not, the Git steps won't work correctly or at all!</b></p>
+        <p><b>N.b. 2: We will start with a couple batches of media, but later if/when we start adding more media, it's important to add new batches of media before you ''pull'' from Git.</b> (I realize this probably doesn't make sense yet, but again, bear with me.) If you ''pull'' first, it will create the folder structure first, then you will have to manually move each media file into the correct folder.</p>
+        <p>So, if you're with me so far, go ahead and download the data from the link provided, either directly into the ''DNA_project'' folder or to ''downloads'' then move the batches to the ''DNA_project'' folder. The structure of the ''DNA_project'' folder should now be analogous to this:</p>
+        <p><ul>DNA_project
+        <ul>
+            <li>
+                batch_001
+                <ul>
+                    <li>
+                        date_01
+                        <ul>
+                            <li>date_01.mp4</li>
+                            <li>date_01.wav</li>
+                        </ul>
+                    </li>
+                    <li>
+                        date_02
+                        <ul>
+                            <li>date_02.mp4</li>
+                            <li>date_02.wav</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                batch_002
+                <ul>
+                    <li>
+                        date_03
+                        <ul>
+                            <li>date_03.mp4</li>
+                            <li>date_03.wav</li>
+                        </ul>
+                    </li>
+                    <li>
+                        date_04
+                        <ul>
+                            <li>date_04.mp4</li>
+                            <li>date_04.wav</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        </ul>
+        </p>
+        <p>With me so far? Yay!! Now we can start with Git</p>
+        <h3>Getting started with Git and Github.</h3>
+        <p>What is all this ''Git'' mumbo-jumbo?</p>
+        <a><img src="https://i.gifer.com/At42.gif"></a>
+        <p><b>Git</b> is a software for version control. It keeps a record of changes that are made to documents at user-defined intervals...more on this later. <b>Github</b> is a website (one of several) where you can link projects and collaborators to work together, maintaining regular records of changes and backup with  Git, despite collaborators working offline on local machines. When commands are issued, Git makes a new version and it's done without any further user input; only when there is a conflict (i.e. two users changed the same line of text within the same interval) does Git require user intervention for this. </p>
+        <p>For this project, we will use Git and Github to maintain the elan projects associated with the media recordings from DNA. (Technical warning...feel free to skip to next paragraph) Elan stores project files in .eaf format, which is a specified .xml form... to make long story short, aside from the media files, almost everything Elan does is plain text. Good for our Git.</p>
+        <p>Anyhow, before you proceed any further, please install Git on your computer (<a href="https://git-scm.com/downloads">Git downloads page</a>) and make yourself a <a href="https://github.com">Github</a> account and send me your username. (N.b.: When you install Git, leave all the default options, but there's one thing you need to make sure of -- there will be a prompt ''Adjusting your path environment''; make sure you select ''Run Git from the Windows Command Prompt''). I assume you've also got a relatively up-to-date version of Elan installed -- otherwise, go ahead and do that <a href="https://tla.mpi.nl/tools/tla-tools/elan/">here</a>.</p>
+        <h3>Make your ''DNA_project" folder into a Git "repo"</h3>
+        <p>So, now you should have Git installed. But do you really? You can check it with the Command Prompt.</p>
+        <a><img src="https://i.imgur.com/zGgMwJk.gif"></a>
+        <p>Oh NO!!!! Not the COMMAND PROMPT!!!!!</p>
+        <a><img src="https://i.gifer.com/3HeF.gif"</a>
+        <p>I've been trying to avoid mentioning the Command Prompt because I know many people are pretty afraid of it, but really it's a pretty simple and powerful tool. We'll only do basic stuff, and I will try to include all you need to know here. Git is a command line tool, which means there's no graphic user interface (actually there are a few, but I don't know how they work). Most of what you need for this project, you can copy-paste right from here.</p>
+        <p>The first thing to do is make sure you installed Git. Open up the Command Prompt (in the start menu, it's called ''CMD''. You'll have a blank window in front of you with something like ''C:user\bob>'' (whatever your username in your own computer is). Type (or copy paste):
+        <ul>
+            git --version
+        </ul>
+        ... and press enter. This should return something like
+        <ul>
+            git version 2.17.1
+        </ul>
+        That means it installed the right way and it's ready to use. Yay :D</p>
+        <p>Now we need to initiate a local Git repository on your machine. For that you need to navigate in the Command prompt to the ''DNA_project'' folder. To do this you first need to know where you are in the file system. Referring back to the above example, if you open Command Prompt and you see ''C:user\bob>'', this tells you that you're in the ''bob'' user folder...this tells you ''where you are''. The folder system is structured like a tree/stambaum and you move up and down the tree structure with the ''cd'' command. To go ''down'' a node, you type ''cd'' + the name of the folder you want to get into. To move up a node you type ''cd..''. So if we're at ''C:user\bob>'' and you saved the DNA_project in the ''Documents'' folder, go a head and type
+        <ul>
+            cd Documents
+        </ul>
+        The push enter. Now, on the left, it should say ''C:user\bob\Documents>''. Almost there. Now type<ul>
+            cd DNA_project
+        </ul>
+        and enter. This get's you in to the folder you need to be in. ''C:user\bob\Documents\DNA_project>''. Of course, this is a hypothetical example, and it will depend where you saved the ''DNA_project''. It might take a few minutes and maybe you have to open up ''My Computer'' and click around in the file system to figure out exactly how the structure is and where your ''DNA_project'' folder is. One tip: when you're in Command Prompt and want to see all the sub nodes to the directory you're in, type
+        <ul>
+            dir
+        </ul>
+        and push enter. This should show you all the files and folders in the place where you currently are with the Command Prompt. In any case, it's important to get comfortable navigating to the ''DNA_project'' folder via Command Prompt, as this is the essential first step to everything we will do with git for this project.</p>
+        <p>Now, once you're in the ''DNA_project'' folder, you need to tell Git that the folder will be a repository, or ''repo''. This is super easy. Just type (and push enter)
+        <ul>
+            git init
+        </ul>
+        This command will initiate a repository (''init'' for initiate) in the folder you're in...hopefully the ''DNA_project'' folder. You probably won't know any different though because the git repo is a hidden folder called ''.git''. The ''.'' at the beginning means it's hidden. You can show these hidden files and folders somehow (if you're interested) -- in Linux you right click and select ''show hidden folders'', macOS has some keyboard shortcut for it, and in Windows, you probably have to adjust some system preferences or similar. Anyway, you've got a Git repo...congrats!</p>
+        <h3>Link your ''DNA_project'' repo with the Github DNA repo</h3>
+        <p>Hey, we're at the last step of setting up our sharing endevour. Now you need to link your ''DNA_project'' folder with the Github repo. Before going any further, make sure you have a github account. Make sure I added you as a collaborator to the Github repo. Have your Github username and password handy.</p>
+        <p>If you made it this far, the rest is pretty simple. Open up the Command Prompt and cd to the ''DNA_project'' folder. Enter the following command
+        <ul>
+            git add remote https://github.com/BobBorges/DNA_project
+        </ul>
+        You'll then be prompted (in the Command Prompt) to enter your github username and password (N.b.: It might be that when you type your password that no characters appear...this is a normal security feature.). ...and now</p>
+        <a><img src="https://thumbs.gfycat.com/ExhaustedFirstAsianlion-small.gif"></a>
+        <p>...we can start collaborating while keeping up to date on whatever changes the other makes. Cool!</p>
+        <h3>Now to collaborate...''pull'', work, save, ''commit'', and ''push''</h3>
+        <p>So when we work on the DNA data, there should be four steps for each ''work session''
+        <ol>
+            <li>''pull'': This get's up to date state of files from the github repo</li>
+            <li>normal work, save as you go in elan with ctrl+s or save in the Elan file menu</li>
+            <li>''commit'': this updates the files in the local repo (the one on yout computer) with changes you've made</li>
+            <li>''push'': this updates the Github repo</li>
+        </ol>
+        If we follow these steps every time we work on the data, we keep an automatic backup of our work and no one works on an obsolete version of files. Hopefully, with that last sentence, this whole process has been worth it. I'll give some more detail about each of these commands in turn.</p>
+        <h5>1. Pull</h5>
+        <p>''Pull'' grabs the current state of the Github repo and updates the local repo. Now, if you followed the tutorial faithfully so far, you should have a ''DNA_project'' folder with a bunch of batches containing folders with media files. The first pull will grab all the .eaf files and deposit them in the correct folder. Because we're gettin a few files with the first ''pull'' it might take some time depending on internet speed. Once again, a pull should be done before starting a new session every time -- pulls after the first one should be faster. To pull, cd to the ''DNA_project'' direcory in Command Prompt and enter
+        <ul>
+            git pull https://github.com/BobBorges/DNA_project master
+        </ul>
+        Go to your file manager (my computer or whatever) and open up one of those media folders, now you should see an .eaf file with the .mp4 and .wav files. Usually when I work with git repos, I leave the Command Prompt open in the background, because it will be needed again in steps 3 and 4.</p>
+        <h5>2. Work normally in Elan</h5>
+        <p>Now you should be able to click the .eaf files and Elan will open with the media and all the up-to-date tiers and annotations. I've tested this on Linux and macOS and it works like this. Maybe in windows, Elan will ask you to locate the media files after you click the .eaf file -- these are just the .mp4 and .waf files in the same folder. Add the .wav file first if this happens (Elan is, or at least used to be, finicky about this). You can make whatever edits to the files' annotations. Save locally as you would. But ctrl+s or equivalent saves the changes in the .eaf file only...your git repo doesn't know about them yet and the github repo doesn't either.</p>
+        <h5>3. ''Commit''</h5>
+        <p>''Commit'' updates the local (on your computer) repo. To commit, you need 2 commands, first you tell git what you want to commit, then you tell it to commit. Let's say you've bene working on the hypothetical ''date_03.eaf'' file from a few sections ago, you need to add the file <i>with a relative path from the hidden .git folder</i>. So in this case, assuming you're still in Command Propmt in the ''DNA_project'' enter the following
+        <ul>
+            git add batch_002/date_03/date_03.eaf
+        </ul>
+        Then commit your changes to the local repo
+        <ul>
+            git commit
+        </ul>
+        You'll be prompted to leave a commit message. Here you should type in a brief message about what changes were made for this particular commit. Something short but informative, like
+        <ul>''corrected transcription tier in date_03.eaf between the 3 and 5 minute mark''</ul> You'll have to exit out of that window...it will ask ''Do you want to save (your commit message)'', ''y'' for yes, and it will as you about the file to write commit message to; agree to the default.
+        There. Now your local repo knows about the changes you've made to the ''date_03.eaf'' file. Time to push them to the github repo. This ''commit'' is the user-defined interval I mentiond a few sections up...not really an interval in the sense of ''every x amount of hours/days'', just when ever you do some changes, you commit them.</p>
+        <h5>4. ''Push''</h5>
+        <p> the last step is to ''push'' the commited changes to the github repo. You've still got the same Command Prompt open in the ''DNA_project'' folder, so just enter
+        <ul>
+            git push origin master
+        </ul>
+        You'll be prompted to enter your github username and password like before. Do that...and you're done.</p>
+        <a><img src="https://ic.pics.livejournal.com/kukmor/14257925/7228111/7228111_original.gif"</a>
+        <p>If you get stuck somewhere call me or get me on the FB chatbox and I'll get you through.</p>
+    </body>
+</html>
