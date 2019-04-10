@@ -117,7 +117,7 @@
         <ul>
             git remote add origin https://github.com/BobBorges/DNA_project
         </ul>
-        You'll then be prompted (in the Command Prompt) to enter your github username and password (N.b.: It might be that when you type your password that no characters appear...this is a normal security feature.). ...and now</p>
+        ...and now</p>
         <a><img src="https://thumbs.gfycat.com/ExhaustedFirstAsianlion-small.gif"></a>
         <p>...we can start collaborating while keeping up to date on whatever changes the other makes. Cool!</p>
         <h3>Now to collaborate...''pull'', work, save, ''commit'', and ''push''</h3>
@@ -135,6 +135,11 @@
             git pull https://github.com/BobBorges/DNA_project master
         </ul>
         Go to your file manager (my computer or whatever) and open up one of those media folders, now you should see an .eaf file with the .mp4 and .wav files. Usually when I work with git repos, I leave the Command Prompt open in the background, because it will be needed again in steps 3 and 4.</p>
+        <p>Alternatively, since you already added the github repo above, you might be able to enter
+        <ul>
+            git pull origin master
+        </ul>
+        Certainly later you can use this, but maybe in the first pull you need to add the full path. ...I should test that.</p>
         <h5>2. Work normally in Elan</h5>
         <p>Now you should be able to click the .eaf files and Elan will open with the media and all the up-to-date tiers and annotations. I've tested this on Linux and macOS and it works like this. Maybe in windows, Elan will ask you to locate the media files after you click the .eaf file -- these are just the .mp4 and .waf files in the same folder. Add the .wav file first if this happens (Elan is, or at least used to be, finicky about this). You can make whatever edits to the files' annotations. Save locally as you would. But ctrl+s or equivalent saves the changes in the .eaf file only...your git repo doesn't know about them yet and the github repo doesn't either.</p>
         <h5>3. ''Commit''</h5>
@@ -147,14 +152,14 @@
             git commit
         </ul>
         You'll be prompted to leave a commit message. Here you should type in a brief message about what changes were made for this particular commit. Something short but informative, like
-        <ul>''corrected transcription tier in date_03.eaf between the 3 and 5 minute mark''</ul> You'll have to exit out of that window...it will ask ''Do you want to save (your commit message)'', ''y'' for yes, and it will as you about the file to write commit message to; agree to the default.
-        There. Now your local repo knows about the changes you've made to the ''date_03.eaf'' file. Time to push them to the github repo. This ''commit'' is the user-defined interval I mentiond a few sections up...not really an interval in the sense of ''every x amount of hours/days'', just when ever you do some changes, you commit them.</p>
+        <ul>''corrected transcription tier in date_03.eaf between the 3 and 5 minute mark''</ul> You'll have to exit out of that window (N.b: On macOS it's a little tricky to get out of this window -- I have no idea how it looks on Windows)...it will ask ''Do you want to save (your commit message)'', ''y'' for yes, and it will as you about the file to write commit message to; agree to the default. If you commmit without adding the file, you will get an error that the file ''batch_002/date_03/date_03.eaf'' is untracked (sometimes I commit without the add to quickly copy the correct file path of the file I want to commit, but maybe that's unorthodox.). No problen, just add the file and commit again.</p>
+        <p>There. Now your local repo knows about the changes you've made to the ''date_03.eaf'' file. Time to push them to the github repo. This ''commit'' is the user-defined interval I mentiond a few sections up...not really an interval in the sense of ''every x amount of hours/days'', just when ever you do some changes, you commit them.</p>
         <h5>4. ''Push''</h5>
         <p> the last step is to ''push'' the commited changes to the github repo. You've still got the same Command Prompt open in the ''DNA_project'' folder, so just enter
         <ul>
             git push origin master
         </ul>
-        You'll be prompted to enter your github username and password like before. Do that...and you're done.</p>
+        You'll then be prompted (in the Command Prompt) to enter your github username and password (N.b.: It might be that when you type your password that no characters appear...this is a normal security feature.) Do that...and you're done.</p>
         <a><img src="https://ic.pics.livejournal.com/kukmor/14257925/7228111/7228111_original.gif"</a>
         <p>If you get stuck somewhere call me or get me on the FB chatbox and I'll get you through.</p>
     </body>
