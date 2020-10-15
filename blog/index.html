@@ -37,6 +37,14 @@
                     <div id="contents">
                         <div id="sidenav-cont"class="column left">
                             <div id="sidenav" class="sidenav">
+                                <div id="sideItem2" class="sidenav-items">                                
+                                    <a href="#" class="sidenav-item">October 2020</a>                                        
+                                    <div class="dropdown-container" style="display: none;">
+                                        <ul id="sidenavUlUl">
+                                            <li><a title="Don't foget about the blog &ndash; 2020&bull;10&bull;15."href="#forgottenBlog">Abandoned Blog</a></li>
+                                        </ul>
+                                    </div>                           
+                                </div>
                                 <div id="sideItem1" class="sidenav-items">                                
                                     <a href="#" class="sidenav-item">December 2018</a>                                        
                                     <div class="dropdown-container" style="display: none;">
@@ -60,10 +68,22 @@
                         <div id="main-content" class="column right">
                             <h1>Blog</h1>
                             <p>I never imagined I'd have a blog, nor the time to sufficiently manage one. But I thought I'd section off a place for it just in case I get around to it.</p>
-                            <p><img src="https://comm350.files.wordpress.com/2016/02/notime.jpg" alt="https://memegenerator.net/img/instances/65711149/tries-to-be-funny-at-work-sends-broken-link.jpg" style="max-width: 100%;"></p>
+                            <p><img src="https://i.ytimg.com/vi/Nh7UgAprdpM/hqdefault.jpg" alt="https://memegenerator.net/img/instances/65711149/tries-to-be-funny-at-work-sends-broken-link.jpg" style="max-width: 100%;"></p>
                             <p>Sometimes I feel that I have something interesting enough to share, that might find an audience of readers, but again, it comes down to a sort of lack of time and prioritizing other things that need to be done in the limited amount of time available. So, the space and the infrastructure is here; I'll give it a try for now, but if the page becomes derilict, I will take it down.</p>
                             <p>Some likely topics for discussion that are likely to find place here include, but are not limited to: Linguistics (esp. fieldwork and analysis), University life, publishing, experiences of an expat/imigrant, and so on.</p>
                             <p>I welcome comments and discussion on whatever posts do eventually make it to the launched version of the site. <a href="mailto:robertborges.thelinguist.net@gmail.com">Email me</a>! In the longer run, I would eventually like to figure out how to provide infrastrucure for public comments here, such that any discussions can be made publicly.</p>
+                            <h2>October 2020</h2>
+                            <h3 id="forgottenBlog" class="hlynk">Abandoned Blog (?)</h3>
+                            <p><strong>2020&bull;10&bull;15</strong> &mdash; Uppsala</p>
+                            <p>So, the website is almost two years old, and there's still only one blog post to show for it. As I suspected, I didn't have|make the time to post much. I'm tempted to say "that all changes now", but I know it's probably not the case.</p>
+                            <p>2020 has been an interesting year. While I feel like I've been quite busy, I spent a good part of the year without a formal employment. There's not much news in terms of conference presentations or new publications. But I have taught a few courses in Uppsala and Jena. Teaching these courses has been a really rewarding, albeit time consuming, experience</p>
+                            <p>I suppose the main bit of development to report has to do with the new research direction that I've been working on with Volker Gast in Jena and Margot van den Berg in Utrecht. The common theme in these two cooperations is that we're using speech-to-text to automate spoken-language corpus building. Very briefly, raw spoken data in the form of mp4 is processed using a series of shell and python script, which chunks audio, speech-recognizes chunks, and builds a transcribed and time aligned Elan readable .eaf file.</p>
+                            <p>In one case, we (van den Berg and I) worked on data processed in this way from the Surinamese Parliament &mdash; <em>De Nationale Assemblée</em>. We took a descriptive, variationist approach to the data, looking at features that have been described in other publications as distinctive in the Surinamese variety of Dutch. The results of our investigation show that a data heavy approach, such as the one we have taken, will lead to a more nuanced understanding of how particular features and thier distribution signal "Surinameseness". </p>
+                            <p>In a more recent rendition, Volker Gast and I have been working on data from the European Parliament. So far, I have mainly been dealing with infrastructural issues. In the Europarl case, video files come with multiple embedded audio tracks; every bit of spoken language is translated simultaneously to all the other EU languages and these translations are embedded to the video file. Currently, the pipe extracts all these audio tracks and builds the Elan readable .eaf file with a transcription for each language track.</p>
+                            <p style="padding-left: 30px; font-size: small;"><img src="https://raw.githubusercontent.com/BobBorges/Website_extras/master/europarl_elan.png" alt="Screenshot of transcriptions as seen in Elan" style="padding-left: 0px; max-width:100%;">Screenshot of transcriptions resulting from the speech-to-text pipe as seen in Elan</p>
+                            <p>We're still exploring possibilities for exactly how we will proceed with analysis of data, but we see enormous potential to address questions related to the translation studies and the multilingual mind.</p>
+                            <p>Otherwise, I've been spending a lot of time honing technical skills, working with shell scripts and python, a little bit of web development (esp. things that will be useful for research infrastructure), and 'tinkering' a bit with hardware (arduinos and PCs). I received an invitation to Google's 'foobar' challenge, so I spent a few days on that and managed to pass the first three levels &mdash; no call from the recruiter yet, but actually I think I might prefer the freedom of research to a corporate job despite the instability.</p>
+                            <p>I don't remember what I had in mind when I referred to my 'technical (r)evolution' in the first blog post, but I have kept up with learning and expanding my own technical capabilities. It's certainly worth the effort it takes to learn new things &mdash; generally I think it forces a more structured and more efficient way of working. Personally, I also find it quite satisfying to take such control over my own work flows.</p>
                             <h2>December 2018</h2>
                             <h3 id="makeWebsite" class="hlynk">The making of a website</h3>
                             <p><strong>2018&bull;12&bull;19</strong> &mdash; Uppsala</p>
@@ -78,7 +98,7 @@
                     </div>
                 </div>
                 <div id="footer">
-                    <p>Content &copy; Robert Borges 2019 <span style="float:right;"><a href="../about/index.html">About</a></span></p>
+                    <p>Content &copy; Robert Borges 2018 &mdash; 2020 <span style="float:right;"><a href="../about/index.html">About</a></span></p>
                 </div>
             </div>
         <script src="../script2.js"></script>
